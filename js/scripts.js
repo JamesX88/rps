@@ -3,70 +3,100 @@ function computerPlay(){
     return choice;
 }
 
-function rpsRound(computerSelection){
-
-    let playerSelection = prompt("Time to choose! Rock, Paper, or Scissors?");
-    if(playerSelection.toLowerCase() === 'rock'){
-        if(computerSelection === 'rock'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The match is a draw.");
-            return "draw";
-        } else if(computerSelection === 'paper'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The computer wins.");
-            return "computer";
-        } else if(computerSelection === 'scissors'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The player wins.");
-            return "player";
-        }
-    }
-
-    else if(playerSelection.toLowerCase() === 'paper'){
-        if(computerSelection === 'paper'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The match is a draw.");
-            return "draw";
-        } else if(computerSelection === 'rock'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The player wins.");
-            return "player";
-        } else if(computerSelection === 'scissors'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The computer wins.");
-            return "computer";
-        }
-    }
-    else if(playerSelection.toLowerCase() === 'scissors'){
-        if(computerSelection === 'scissors'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The match is a draw.");
-            return "draw";
-        } else if(computerSelection === 'rock'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The computer wins.");
-            return "computer";
-        } else if(computerSelection === 'paper'){
-            console.log("The player chose "+playerSelection+ " and the computer chose " + computerSelection +" - The player wins.");
-            return "player";
-        }
+function rpsRound(playerSelection, computerSelection){
+    switch(playerSelection){
+        case 'rock':
+            switch(computerSelection){
+                case 'rock':
+                    alert('The round is a draw! No points awarded.');
+                    break;
+                case 'paper':
+                    return 'computer';
+                case 'scissors':
+                    return 'player';
+                default:
+                    break;
+            }
+            break;
+        case 'paper':
+            switch(computerSelection){
+                case 'rock':
+                    return 'player';
+                case 'paper':
+                    alert('The round is a draw! No points awarded.');
+                    break;
+                case 'scissors':
+                    return 'computer';
+                default:
+                    break;
+            }
+            break;
+        case 'scissors':
+            switch(computerSelection){
+                case 'rock':
+                    return 'computer';
+                case 'paper':
+                    return 'player';
+                case 'scissors':
+                    alert('The round is a draw! No points awarded.');
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
     }
 }
 
 function game(){
     let playerWins = 0;
     let computerWins = 0;
-    for(i = 0; i < 5; i++){
-        let winner = rpsRound(computerPlay());
-        if (winner === 'player'){
-            playerWins++;
-            console.log("The score is player: "+playerWins+", computer: "+computerWins);
-        }else if (winner === 'computer'){
-            computerWins++;
-            console.log("The score is player: "+playerWins+", computer: "+computerWins);
-        } else{
-            console.log("The match was a draw. The score is player: "+playerWins+", computer: "+computerWins);
-        }
-    }
-    if(playerWins > computerWins){
-        console.log("Player Wins with a score of "+playerWins+"!");
-    }else if (computerWins > playerWins){
-        console.log("Computer Wins with a score of "+computerWins+"!");
-    } else{
-        console.log("It was a draw, the score was player: "+playerWins+", computer: "+computerWins);
-    }
+
+    const ps = document.querySelector('.playerScore');
+    const cs = document.querySelector('.computerScore');
+
+    const buttons = document.querySelectorAll('button');
+    let playerSelection = "";
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            while(playerWins < 5 || computerWins < 5){
+                if(button.id === 'rock'){
+                    let winner = rpsRound(button.id, computerPlay());
+                    if (winner === 'player'){
+                        playerWins++;
+                        ps.innerHTML = playerWins;
+                    }else if (winner === 'computer'){
+                        computerWins++;
+                        cs.innerHTML = computerWins;
+                    } else{
+                    }
+                } else if(button.id === 'paper'){
+                    let winner = rpsRound(button.id, computerPlay());
+                    if (winner === 'player'){
+                        playerWins++;
+                        ps.innerHTML = playerWins;
+                    }else if (winner === 'computer'){
+                        computerWins++;
+                        cs.innerHTML = computerWins;
+                    } else{
+                    }
+                } else{
+                    let winner = rpsRound(button.id, computerPlay());
+                    if (winner === 'player'){
+                        playerWins++;
+                        ps.innerHTML = playerWins;
+                    }else if (winner === 'computer'){
+                        computerWins++;
+                        cs.innerHTML = computerWins;
+                    } else{
+                    }
+                }
+            }
+    
+        })
+    })
 }
 
 game();
