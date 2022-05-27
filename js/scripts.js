@@ -13,7 +13,19 @@ function game(){
 
     const ps = document.querySelector('.playerScore');
     const cs = document.querySelector('.computerScore');
-
+    let rockBtn = document.querySelector('#rock');
+    let paperBtn = document.querySelector('#paper');
+    let scissorsBtn = document.querySelector('#scissors');
+            
+            rockBtn.addEventListener('click', () => {
+                console.log("clicked Rock")
+            });
+            paperBtn.addEventListener('click', () => {
+                console.log("clicked Paper")
+            });
+            scissorsBtn.addEventListener('click', () => {
+                console.log("clicked Scissors")
+            })
 
 
 }
