@@ -14,15 +14,9 @@ function game(){
     const ps = document.querySelector('.playerScore');
     const cs = document.querySelector('.computerScore');
 
-    const buttons = document.querySelectorAll('button');
-    let playerSelection = "";
 
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-  
-        })
 
-    })
 }
+
 
 game();
