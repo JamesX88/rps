@@ -4,49 +4,7 @@ function computerPlay(){
 }
 
 function rpsRound(playerSelection, computerSelection){
-    switch(playerSelection){
-        case 'rock':
-            switch(computerSelection){
-                case 'rock':
-                    alert('The round is a draw! No points awarded.');
-                    break;
-                case 'paper':
-                    return 'computer';
-                case 'scissors':
-                    return 'player';
-                default:
-                    break;
-            }
-            break;
-        case 'paper':
-            switch(computerSelection){
-                case 'rock':
-                    return 'player';
-                case 'paper':
-                    alert('The round is a draw! No points awarded.');
-                    break;
-                case 'scissors':
-                    return 'computer';
-                default:
-                    break;
-            }
-            break;
-        case 'scissors':
-            switch(computerSelection){
-                case 'rock':
-                    return 'computer';
-                case 'paper':
-                    return 'player';
-                case 'scissors':
-                    alert('The round is a draw! No points awarded.');
-                    break;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
-    }
+    
 }
 
 function game(){
@@ -61,41 +19,9 @@ function game(){
 
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            while(playerWins < 5 || computerWins < 5){
-                if(button.id === 'rock'){
-                    let winner = rpsRound(button.id, computerPlay());
-                    if (winner === 'player'){
-                        playerWins++;
-                        ps.innerHTML = playerWins;
-                    }else if (winner === 'computer'){
-                        computerWins++;
-                        cs.innerHTML = computerWins;
-                    } else{
-                    }
-                } else if(button.id === 'paper'){
-                    let winner = rpsRound(button.id, computerPlay());
-                    if (winner === 'player'){
-                        playerWins++;
-                        ps.innerHTML = playerWins;
-                    }else if (winner === 'computer'){
-                        computerWins++;
-                        cs.innerHTML = computerWins;
-                    } else{
-                    }
-                } else{
-                    let winner = rpsRound(button.id, computerPlay());
-                    if (winner === 'player'){
-                        playerWins++;
-                        ps.innerHTML = playerWins;
-                    }else if (winner === 'computer'){
-                        computerWins++;
-                        cs.innerHTML = computerWins;
-                    } else{
-                    }
-                }
-            }
-    
+  
         })
+
     })
 }
 
