@@ -2,13 +2,23 @@
 <html>
     <head>
         <script src="js/scripts.js" defer type="text/javascript"></script>
+        <style>
+            body{text-align: center; display:flex; flex-flow:column; align-items: center;;}
+            .flex-container{display: flex; align-items:center; justify-content: center;}
+            .playerScore, .computerScore{font-size: 36px;}
+            .scoreboard{border: 1px solid black; width:3em; text-align:center;}
+    
+            .gameMessage{height: 75px;}
+        </style>
     </head>
     <body>
         <header></header>
         <div class="scoreboard flex-container">
             <div class="playerScore">0</div>
+            <div class="divideScore">-</div>
             <div class="computerScore">0</div>
         </div>
+        <div class="gameMessage">Welcome to the game! Press a button to begin.</div>
         <div class="rps-buttons flex-container">
             <button class="rock" id="rock">Rock</button>
             <button class="paper" id="paper">Paper</button>
